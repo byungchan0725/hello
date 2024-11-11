@@ -1,6 +1,7 @@
 import mss
 import time
 import cv2
+import pyautogui
 import numpy as np
 
 def search_target():
@@ -30,6 +31,8 @@ def search_target():
     if max_val > 0.9:  # 신뢰도 임계값
         result_img = cv2.imread("./screen_capture.png")
         cv2.rectangle(result_img, top_left, bottom_right, (0,255,0), 2)
+        center = ((top_left[0] + bottom_right[0]) // 2, (top_left[1] + bottom_right[1]) // 2)
+        print(center)
         cv2.imshow('Result', result_img)
 
 def capture_screen():
@@ -55,6 +58,9 @@ def main():
             break
 
     cv2.destroyAllWindows()
+    
+def test():
+    pyautogui.click(x=100, y=200)
 
 if __name__ == "__main__":
-    main()
+    test()
