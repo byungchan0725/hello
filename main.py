@@ -51,4 +51,5 @@ def main():
 
 if __name__ == "__main__":
     pyautogui.PAUSE = 0  # PyAutoGUI 기본 딜레이 제거
+    print('메크로가 시작되었습니다.')
     main()

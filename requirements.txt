@@ -1,0 +1,10 @@
+mss==9.0.2
+numpy==2.1.3
+opencv-python==4.10.0.84
+PyAutoGUI==0.9.54
+PyGetWindow==0.0.9
+PyMonCtl==0.92
+PyMsgBox==1.0.9
+PyScreeze==1.0.1
+PyWinBox==0.7
+PyWinCtl==0.4.1
