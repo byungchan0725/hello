@@ -17,15 +17,15 @@ def search_target(screen, template):
         # 원본 크기로 좌표 변환
         center_x = int((max_loc[0] + small_template.shape[1]/2) / scale)
         center_y = int((max_loc[1] + small_template.shape[0]/2) / scale)
-        pyautogui.click(x=center_x//2, y=center_y//2)
-        # pyautogui.moveTo(x=center_x//2, y=center_y//2)
+        # pyautogui.click(x=center_x//2, y=center_y//2)
+        pyautogui.moveTo(x=center_x//2, y=center_y//2)
         return True
     return False
 
 def main():
     # 템플릿 이미지 한 번만 로드
-    target = cv2.imread("./full_target.png", cv2.IMREAD_GRAYSCALE)
-    template = target[880:1030, 2510:2720]
+    target = cv2.imread("./full_target_v2.png", cv2.IMREAD_GRAYSCALE)
+    template = target[880:1030, 2710:2910]
     
     # mss 객체 재사용
     with mss.mss() as sct:
@@ -36,9 +36,10 @@ def main():
                 # 스크린샷을 파일로 저장하지 않고 직접 처리
                 screenshot = np.array(sct.grab(monitor))
                 gray_screen = cv2.cvtColor(screenshot, cv2.COLOR_BGRA2GRAY)
-                
+                cv2.imshow('test', template)
                 if search_target(gray_screen, template):
                     # 매칭 성공 시 잠시 대기
+                    print('hello')
                     pyautogui.PAUSE = 0.1
                 
                 if cv2.waitKey(1) & 0xFF == ord('q'):
