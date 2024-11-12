@@ -17,8 +17,8 @@ def search_target(screen, template):
         # 원본 크기로 좌표 변환
         center_x = int((max_loc[0] + small_template.shape[1]/2) / scale)
         center_y = int((max_loc[1] + small_template.shape[0]/2) / scale)
-        pyautogui.click(x=center_x//2, y=center_y//2)
-        # pyautogui.moveTo(x=center_x//2, y=center_y//2)
+        # pyautogui.click(x=center_x//2, y=center_y//2)
+        pyautogui.moveTo(x=center_x//2, y=center_y//2)
         return True
     return False
 
@@ -39,6 +39,7 @@ def main():
                 
                 if search_target(gray_screen, template):
                     # 매칭 성공 시 잠시 대기
+                    print('hello')
                     pyautogui.PAUSE = 0.1
                 
                 if cv2.waitKey(1) & 0xFF == ord('q'):
