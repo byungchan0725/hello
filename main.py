@@ -24,8 +24,8 @@ def search_target(screen, template):
 
 def main():
     # 템플릿 이미지 한 번만 로드
-    target = cv2.imread("./full_target.png", cv2.IMREAD_GRAYSCALE)
-    template = target[880:1030, 2510:2720]
+    target = cv2.imread("./full_target_v2.png", cv2.IMREAD_GRAYSCALE)
+    template = target[880:1030, 2710:2910]
     
     # mss 객체 재사용
     with mss.mss() as sct:
@@ -36,7 +36,7 @@ def main():
                 # 스크린샷을 파일로 저장하지 않고 직접 처리
                 screenshot = np.array(sct.grab(monitor))
                 gray_screen = cv2.cvtColor(screenshot, cv2.COLOR_BGRA2GRAY)
-                
+                cv2.imshow('test', template)
                 if search_target(gray_screen, template):
                     # 매칭 성공 시 잠시 대기
                     print('hello')
