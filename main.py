@@ -17,8 +17,8 @@ def search_target(screen, template):
         # 원본 크기로 좌표 변환
         center_x = int((max_loc[0] + small_template.shape[1]/2) / scale)
         center_y = int((max_loc[1] + small_template.shape[0]/2) / scale)
-        # pyautogui.click(x=center_x//2, y=center_y//2)
-        pyautogui.moveTo(x=center_x//2, y=center_y//2)
+        pyautogui.click(x=center_x//2, y=center_y//2)
+        # pyautogui.moveTo(x=center_x//2, y=center_y//2)
         return True
     return False
 
@@ -36,7 +36,7 @@ def main():
                 # 스크린샷을 파일로 저장하지 않고 직접 처리
                 screenshot = np.array(sct.grab(monitor))
                 gray_screen = cv2.cvtColor(screenshot, cv2.COLOR_BGRA2GRAY)
-                cv2.imshow('test', template)
+                # cv2.imshow('test', template)
                 if search_target(gray_screen, template):
                     # 매칭 성공 시 잠시 대기
                     print('hello')
